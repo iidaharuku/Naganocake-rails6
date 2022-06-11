@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_06_05_133937) do
     t.string "postal_code"
     t.string "telephone_number"
     t.text "address"
-    t.boolean "withdraw_status"
+    t.boolean "withdraw_status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true

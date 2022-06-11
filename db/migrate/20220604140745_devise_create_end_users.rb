@@ -38,7 +38,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[6.1]
       t.string :postal_code
       t.string :telephone_number
       t.text :address
-      t.boolean :withdraw_status
+      t.boolean :withdraw_status, default: false
 
 
 
