@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'items/index'
+  get 'items/show'
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     registrations: 'end_users/registrations'
