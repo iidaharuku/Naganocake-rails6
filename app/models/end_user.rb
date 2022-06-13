@@ -11,5 +11,4 @@ class EndUser < ApplicationRecord
   validates :postal_code, presence: true
   validates :telephone_number, presence: true
   validates :address, presence: true
-  validates :withdraw_status, presence: true
 end

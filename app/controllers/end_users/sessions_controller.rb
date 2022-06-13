@@ -36,7 +36,7 @@ class EndUsers::SessionsController < Devise::SessionsController
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     return if !@end_user
     @withdraw_status = EndUser.find_by(email: params[:end_user][:withdraw_status])
-    if @end_user.valid_password?(params[:end_user][:password]) && @withdraw_status == true
+    if @end_user.valid_password?(params[:end_user][:password]) && @withdraw_status !=  false
       redirect_to new_end_user_registration_path
     end
   end

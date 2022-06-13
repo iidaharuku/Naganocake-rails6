@@ -1,2 +1,22 @@
-<h1>Customers#confirm</h1>
-<p>Find me in app/views/customers/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-auto">
+    　<h6 class="d-flex justify-content-center">本当に退会しますか？</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 m-auto d-flex justify-content-center">
+      <p >退会すると、会員登録情報や<br>
+      これまでの購入履歴が閲覧できなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 ml-auto">
+      <%= link_to "退会しない", mypage_path, class: "btn btn-primary text-white"%> 
+    </div>
+    <div class="col-2 mr-auto">
+      <%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger text-white", "data-confirm" => "本当に退会しますか？",  method: :patch %>
+    </div>
+  </div>
+</div>
