@@ -23,7 +23,7 @@
         　　<%= link_to "ログアウト", destroy_end_user_session_path, class: "btn border", method: :delete%>
         　<% elsif admin_signed_in? then %>
         　   <p>商品一覧</p>
-        　　<p>会員一覧</p>
+        　　<%= link_to "会員一覧", admin_customers_path, class: "btn border" %>
         　　<p>注文履歴一覧</p>
         　　<p>ジャンル一覧</p>
         　　<%= link_to "ログアウト", destroy_admin_session_path, class: "btn border", method: :delete%>
