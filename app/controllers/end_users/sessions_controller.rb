@@ -31,12 +31,12 @@ class EndUsers::SessionsController < Devise::SessionsController
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :last_name, :first_name, :last_kana_name, :first_kana_name, :postal_code, :address, :telephone_number, :password, :password_confirmation, :commit])
   end
-  
+
   def end_user_withdraw_state
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     return if !@end_user
-    @withdraw_status = EndUser.find_by(email: params[:end_user][:withdraw_status])
-    if @end_user.valid_password?(params[:end_user][:password]) && @withdraw_status !=  false
+    # @withdraw_status = EndUser.find_by(email: params[:end_user][:withdraw_status])
+    if @end_user.valid_password?(params[:end_user][:password]) && @end_user.withdraw_status != false
       redirect_to new_end_user_registration_path
     end
   end
