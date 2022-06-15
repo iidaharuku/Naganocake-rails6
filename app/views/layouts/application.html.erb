@@ -25,7 +25,7 @@
         　   <p>商品一覧</p>
         　　<%= link_to "会員一覧", admin_customers_path, class: "btn border" %>
         　　<p>注文履歴一覧</p>
-        　　<p>ジャンル一覧</p>
+        　　<%= link_to "ジャンル一覧", admin_genres_path, class: "btn border" %>
         　　<%= link_to "ログアウト", destroy_admin_session_path, class: "btn border", method: :delete%>
       　　<% else %>
             <%= link_to "商品一覧", root_path, class: "btn border" %>

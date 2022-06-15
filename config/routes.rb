@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  
+  root to: 'homes#top'
+  get 'homes/about'
   get 'items/index'
   get 'items/show'
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     registrations: 'end_users/registrations'
   }
-  root to: 'homes#top'
-  get 'homes/about'
   get 'customers/mypage' => 'customers#show', as: 'mypage'
   get 'customers/edit' => 'customers#edit'
   patch 'customers/update' => 'customers#update'
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :customers
+    resources :genres
   end
 end
