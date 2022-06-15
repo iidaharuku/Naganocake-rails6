@@ -36,7 +36,7 @@
         　<% @genres.each do |genre| %>
             <tr>
               <th><%= genre.name %></th>
-              <th><%= link_to "編集する", admin_genres_path, class: "btn btn-success text-white" %></th>
+              <th><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success text-white" %></th>
             </tr>
           <% end %>
         </tbody>
