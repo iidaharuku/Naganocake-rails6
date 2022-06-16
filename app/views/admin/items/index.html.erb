@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>商品一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><P>商品ID</P></th>
+          <th><P>商品名</P></th>
+          <th><P>税抜価格</P></th>
+          <th><P>ジャンル</P></th>
+          <th><P>ステータス</P></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <th><%= item.id %></th>
+            <th><%= item.name%></th>
+            <th><%= item.tax_free_cost %></th>
+            <th><%= item.genre.name %></th>
+            <th>
+              <% if item.stock_status == 1%>
+                <p>販売中</p>
+              <% else %>
+                <p>販売停止中</p>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>1 2 3 Next＞ Last >></p>
+    </div>
+  </div>
+</div>
