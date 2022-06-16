@@ -41,7 +41,7 @@
           <p>ジャンル</p>
         </div>
       　<div class="col-4">
-          <%= f.collection_select :genre_id, Item.all, :id, :name, include_blank: "--選択して下さい--" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
       　</div>
       </div>
       <div class="row">
@@ -59,6 +59,7 @@
       　<div class="col-4">
           <%= f.label :stock_status, "販売中", value: 1, style: "display: inline-block;" %>
           <%= f.radio_button :stock_status,  1 %>
+          <!--= f.radio_button :stock_status,  :1 %>だとデータがストリングになるから：をはずしてintegerにする-->
           <%= f.label :stock_status, "販売停止中", value: 2, style: "display: inline-block;" %>
           <%= f.radio_button :stock_status,  2 %>
       　</div>
