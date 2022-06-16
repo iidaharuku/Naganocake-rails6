@@ -41,7 +41,7 @@
           <p>ジャンル</p>
         </div>
       　<div class="col-2">
-          <%= f.text_field :genre_id, autofocus: true, autocomplete: "name"%>
+          <%= f.collection_select :genre_id, Item.all, :id, :name, include_blank: "--選択して下さい--" %>
       　</div>
       </div>
       <div class="row">
@@ -57,11 +57,11 @@
           <p>販売ステータス</p>
         </div>
       　<div class="col-2">
-          
+
       　</div>
       </div>
-      
-      
+
+
       <div class="row">
         <%= f.submit "変更を保存",class: "btn btn-success text-white" %>
       </div>
