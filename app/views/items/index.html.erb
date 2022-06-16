@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>商品一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+      <% @items.each  do |item| %>
+        <div class="col-3">
+          <div ><%= image_tag item.get_image(60,40) %></div>
+          <div ><%= item.name %></div>
+          <div ><%= item.tax_free_cost %></div>
+        </div>
+      <% end %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>1 2 3 Next＞ Last >></p>
+    </div>
+  </div>
+</div>
