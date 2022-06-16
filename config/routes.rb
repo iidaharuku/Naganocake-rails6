@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
   
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
   root to: 'homes#top'
   get 'homes/about'
   get 'items/index'
@@ -26,5 +20,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers
     resources :genres
+    resources :items
   end
 end
