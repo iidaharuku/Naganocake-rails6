@@ -5,4 +5,12 @@ class Item < ApplicationRecord
   validates :genre_id, presence: true
   validates :name, presence: true
   validates :stock_status, presence: true
+  
+  def get_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no-image')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
 end

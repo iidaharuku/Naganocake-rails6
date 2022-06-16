@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'homes#top'
   get 'homes/about'
-  get 'items/index'
-  get 'items/show'
+  resources :items
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     registrations: 'end_users/registrations'
