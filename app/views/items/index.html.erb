@@ -10,6 +10,7 @@
           <div ><%= image_tag item.get_image(60,40) %></div>
           <div ><%= item.name %></div>
           <div ><%= item.tax_free_cost %></div>
+          <div><%= link_to "商品詳細", item_path(item) %></div>
         </div>
       <% end %>
   </div>
