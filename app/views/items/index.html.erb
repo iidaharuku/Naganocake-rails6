@@ -6,12 +6,14 @@
   </div>
   <div class="row">
       <% @items.each  do |item| %>
-        <div class="col-3">
-          <div ><%= image_tag item.get_image(60,40) %></div>
-          <div ><%= item.name %></div>
-          <div ><%= item.tax_free_cost %></div>
-          <div><%= link_to "商品詳細", item_path(item) %></div>
-        </div>
+        <% if item.stock_status == 1 %>
+          <div class="col-3">
+            <div ><%= image_tag item.get_image(60,40) %></div>
+            <div ><%= item.name %></div>
+            <div ><%= (item.tax_free_cost*1.08).to_i %></div>
+            <div><%= link_to "商品詳細", item_path(item) %></div>
+          </div>
+        <% end %>
       <% end %>
   </div>
   <div class="row">
