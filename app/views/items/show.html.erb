@@ -1,4 +1,10 @@
 <div class="container">
+    <% if @cart_item.errors.any? %>
+      <%= @cart_item.errors.count %>errors
+      <% @cart_item.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
   <div class="row">
     <div class="col">
       <%= image_tag @item.get_image(180,120) %>
