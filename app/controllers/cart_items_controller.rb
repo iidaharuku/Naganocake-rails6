@@ -12,7 +12,7 @@ class CartItemsController < ApplicationController
       else
         @item_item.update(amount: @cart_item.amount + @item_item.amount)
         redirect_to cart_items_path
-      end
+    end
     elsif @cart_item.save
       redirect_to cart_items_path
     else
@@ -33,6 +33,15 @@ class CartItemsController < ApplicationController
     else
       render :index
     end
+  end
+  def index
+    @cart_items = CartItem.all
+  end
+
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   private
