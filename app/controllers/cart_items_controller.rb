@@ -2,13 +2,11 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
-    
-    @item_id = CartItem.find_by(item_id: params[:cart_item][:item_id])
-    if @item_id == @cart_item.item_id
-      @cart_item_update = CartItem.find(@item_id)
-      amount = @cart_item_update.amount
-      @cart_item_update.amount = amount + @cart_item.amount
-      @cart_item_update.update(cart_item_params)
+
+    @item_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+    if @item_item
+      @item_item.update(amount: @cart_item.amount + @item_item.amount)
+      redirect_to cart_items_path
     elsif @cart_item.save
       redirect_to cart_items_path
     else
