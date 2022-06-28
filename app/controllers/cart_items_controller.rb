@@ -12,7 +12,7 @@ class CartItemsController < ApplicationController
       else
         @item_item.update(amount: @cart_item.amount + @item_item.amount)
         redirect_to cart_items_path
-    end
+      end
     elsif @cart_item.save
       redirect_to cart_items_path
     else
@@ -35,12 +35,22 @@ class CartItemsController < ApplicationController
     end
   end
   def index
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(end_user_id: current_end_user)
+    @sum = 0
+    @cart_items.each  do |cart_item|
+      @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
+    end
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    redirect_to cart_items_path
+  end
+
+  def destroy_all
+    @cart_items = CartItem.where(end_user_id: current_end_user)
+    @cart_items.destroy_all
     redirect_to cart_items_path
   end
 

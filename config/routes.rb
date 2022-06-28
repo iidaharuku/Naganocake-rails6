@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: 'homes#top'
   get 'homes/about'
   resources :items
@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     sessions: 'end_users/sessions',
     registrations: 'end_users/registrations'
   }
-  resources :cart_items
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  resources :cart_items
   get 'customers/mypage' => 'customers#show', as: 'mypage'
   get 'customers/edit' => 'customers#edit'
   patch 'customers/update' => 'customers#update'
