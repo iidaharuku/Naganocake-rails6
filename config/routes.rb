@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'addresses/index'
-  get 'addresses/edit'
   root to: 'homes#top'
   get 'homes/about'
   resources :items
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
   patch 'customers/update' => 'customers#update'
   get 'customers/confirm' => 'customers#confirm'
   patch 'customers/withdraw' => 'customers#withdraw'
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
   }
