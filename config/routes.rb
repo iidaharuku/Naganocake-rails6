@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'addresses/index'
+  get 'addresses/edit'
   root to: 'homes#top'
   get 'homes/about'
   resources :items
