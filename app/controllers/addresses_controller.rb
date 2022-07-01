@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
     @address = Address.new
     @addresses = Address.all
   end
-  
+
   def create
     @address = Address.new(address_params)
     @address.end_user_id = current_end_user.id
@@ -15,10 +15,11 @@ class AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
-  
+
   private
   def address_params
-    params.require(:addresses).permit(:postal_code, :place, :name)
+    params.require(:address).permit(:postal_code, :place, :name)
   end
 end
