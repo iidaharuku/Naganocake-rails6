@@ -11,6 +11,4 @@ class Order < ApplicationRecord
   validates :total_cost, presence: true
   validates :status, presence: true ,default: 0
 
-  
-
 end
