@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :index, :show]
   get 'orders/complete' => 'orders#complete'
   post 'orders' => 'orders#create'
-  post 'orders/confirm' => 'orders#con'
+  get 'orders/confirm' => 'orders#confirm'
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
   }

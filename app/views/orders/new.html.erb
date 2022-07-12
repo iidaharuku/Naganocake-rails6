@@ -5,7 +5,7 @@
     </div>
   </div>
   <div>
-    <%= form_with model: @order,  url: orders_path ,class: "container", method: :post do |f| %>
+    <%= form_with model: @order,  url: orders_complete_path ,class: "container", method: :post do |f| %>
       <div class="row">
         <h4>支払い方法</h4>
       </div>
@@ -56,7 +56,7 @@
           <p>住所</p>
         </div>
         <div class="col-4">
-          <%= f.text_field :postal_code,  autocomplete: "東京都渋谷区代々木神園町0-0" %>
+          <%= f.text_field :send_address,  autocomplete: "東京都渋谷区代々木神園町0-0" %>
         </div>
       </div>
       <div class="row">
@@ -64,13 +64,11 @@
           <p>宛名</p>
         </div>
         <div class="col-4">
-          <%= f.text_field :postal_code,  autocomplete: "令和道子"%>
+          <%= f.text_field :address_name,  autocomplete: "令和道子"%>
         </div>
       </div>
-
       
-      
-      <%= f.submit "確認画面へ進む", class: "btn btn-primary text-white" %>
+      <%= link_to "確認画面へ進む", orders_complete_path ,class: "btn btn-primary text-white" %>
     <% end %>
   </div>
 </div>

@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
   end
 
   def complete
+    
+    
+      
   end
 
   def index
