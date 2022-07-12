@@ -1,2 +1,76 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>注文情報入力</h3>
+    </div>
+  </div>
+  <div>
+    <%= form_with model: @order,  url: orders_path ,class: "container", method: :post do |f| %>
+      <div class="row">
+        <h4>支払い方法</h4>
+      </div>
+      <div class="row">
+        <%= f.radio_button :pay_way, "クレジットカード", checked: true %>
+        <%= f.label :pay_way, "クレジットカード", {value: "クレジットカード"} %>
+      </div>
+      <div class="row">
+        <%= f.radio_button :pay_way, "銀行振り込み" %>
+        <%= f.label :pay_way, "銀行振り込み", {value: "銀行振り込み"} %>
+      </div>
+      <div class="row">
+        <h4>お届け先</h4>
+      </div>
+      <div class="row">
+        <%= f.radio_button :postal_code, 0 , checked: true %>
+        <%= f.label :postal_code, "ご自身の住所", {value: 0} %>
+      </div>
+      <div class= "row">
+        <%= current_end_user.postal_code %> <%= current_end_user.address %>
+      </div>
+      <div class= "row">
+        <%= current_end_user.last_name %><%= current_end_user.first_name %>
+      </div>
+      <div class="row">
+        <%= f.radio_button :postal_code, 1 %>
+        <%= f.label :postal_code, "登録済み住所から選択", {value: 1} %>
+      　<!--%= f.collection_select :address_id, Address.where(end_user_id: current_end_user), :postal_code, :address_display, include_blank: "--選択して下さい--" %>-->
+      　
+      </div>
+      <div class="row">
+        <%= f.select :address_id, options_from_collection_for_select(Address.where(end_user_id: current_end_user), :id, :address_display) %>
+      </div>
+      <div class="row">
+        <%= f.radio_button :postal_code, 2 %>
+        <%= f.label :postal_code, "登録済み住所から選択", {value: 2} %>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>郵便番号(ハイフンなし)</p>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :postal_code,  autocomplete: "0000000" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>住所</p>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :postal_code,  autocomplete: "東京都渋谷区代々木神園町0-0" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p>宛名</p>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :postal_code,  autocomplete: "令和道子"%>
+        </div>
+      </div>
+
+      
+      
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary text-white" %>
+    <% end %>
+  </div>
+</div>
