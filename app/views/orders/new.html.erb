@@ -5,7 +5,7 @@
     </div>
   </div>
   <div>
-    <%= form_with model: @order,  url: orders_complete_path ,class: "container", method: :post do |f| %>
+    <%= form_with model: @order,  url: orders_confirm_path ,class: "container", method: :get do |f| %>
       <div class="row">
         <h4>支払い方法</h4>
       </div>
@@ -34,7 +34,7 @@
         <%= f.radio_button :postal_code, 1 %>
         <%= f.label :postal_code, "登録済み住所から選択", {value: 1} %>
       　<!--%= f.collection_select :address_id, Address.where(end_user_id: current_end_user), :postal_code, :address_display, include_blank: "--選択して下さい--" %>-->
-      　
+
       </div>
       <div class="row">
         <%= f.select :postage, options_from_collection_for_select(Address.where(end_user_id: current_end_user), :id, :address_display) %>
@@ -67,8 +67,8 @@
           <%= f.text_field :address_name,  autocomplete: "令和道子"%>
         </div>
       </div>
-      
-      <%= link_to "確認画面へ進む", orders_complete_path ,class: "btn btn-primary text-white" %>
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary text-white" %>
+      <!--%= link_to "確認画面へ進む", orders_complete_path ,class: "btn btn-primary text-white" %>-->
     <% end %>
   </div>
 </div>

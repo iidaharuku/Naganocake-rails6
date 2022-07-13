@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-
-  def complete
+  
+  def confirm
     @order = Order.new(order_params)
     @order.end_user_id = current_end_user.id
     
@@ -24,6 +24,9 @@ class OrdersController < ApplicationController
       @order.address_name = order_address.name
     end
       
+  end
+  def complete
+    
   end
 
   def index
