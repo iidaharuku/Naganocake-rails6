@@ -5,8 +5,6 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @order.end_user_id = current_end_user.id
-
     @cart_items = CartItem.where(end_user_id: current_end_user)
     @sum = 0
     @cart_items.each  do |cart_item|
@@ -26,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def complete
-
+    
   end
 
   def index

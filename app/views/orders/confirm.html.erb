@@ -54,8 +54,8 @@
     <div class="col"><P>お届け先</P></div>
     <div class="col"><%= @order.postal_code %><%=  @order.send_address %><%= @order.address_name %></div>
   </div>
-
-
-      <%= link_to "注文を確定する", orders_complete_path ,class: "btn btn-success text-white" %>
+  <div>
+    <%= form_with model: @order,  url: orders_complete_path ,method: :get do |f| %>
+    <%= f.submit "注文を確定する", class: "btn btn-success text-white" %>
   </div>
 </div>
