@@ -21,8 +21,8 @@
         <h4>お届け先</h4>
       </div>
       <div class="row">
-        <%= f.radio_button :postal_code, 0 , checked: true %>
-        <%= f.label :postal_code, "ご自身の住所", {value: 0} %>
+        <%= f.radio_button :total_cost, 0 , checked: true %>
+        <%= f.label :total_cost, "ご自身の住所", {value: 0} %>
       </div>
       <div class= "row">
         <%= current_end_user.postal_code %> <%= current_end_user.address %>
@@ -31,8 +31,8 @@
         <%= current_end_user.last_name %><%= current_end_user.first_name %>
       </div>
       <div class="row">
-        <%= f.radio_button :postal_code, 1 %>
-        <%= f.label :postal_code, "登録済み住所から選択", {value: 1} %>
+        <%= f.radio_button :total_cost, 1 %>
+        <%= f.label :total_cost, "登録済み住所から選択", {value: 1} %>
       　<!--%= f.collection_select :address_id, Address.where(end_user_id: current_end_user), :postal_code, :address_display, include_blank: "--選択して下さい--" %>-->
 
       </div>
@@ -40,8 +40,8 @@
         <%= f.select :postage, options_from_collection_for_select(Address.where(end_user_id: current_end_user), :id, :address_display) %>
       </div>
       <div class="row">
-        <%= f.radio_button :postal_code, 2 %>
-        <%= f.label :postal_code, "登録済み住所から選択", {value: 2} %>
+        <%= f.radio_button :total_cost, 2 %>
+        <%= f.label :total_cost, "新しいお届け先", {value: 2} %>
       </div>
       <div class="row">
         <div class="col-3">
