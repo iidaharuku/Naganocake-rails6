@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   get 'customers/confirm' => 'customers#confirm'
   patch 'customers/withdraw' => 'customers#withdraw'
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:new, :create, :index, :show]
+  
   get 'orders/complete' => 'orders#complete'
-  post 'orders' => 'orders#create'
   get 'orders/confirm' => 'orders#confirm'
+  resources :orders, only: [:new, :create, :index, :show]
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
   }

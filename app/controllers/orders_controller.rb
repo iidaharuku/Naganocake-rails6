@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def complete
-      @order = Order.new(order_params)
+    @order = Order.new(order_params)
     @order.end_user_id = current_end_user.id
     
     @cart_items = CartItem.where(end_user_id: current_end_user)
