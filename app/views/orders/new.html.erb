@@ -10,12 +10,12 @@
         <h4>支払い方法</h4>
       </div>
       <div class="row">
-        <%= f.radio_button :pay_way, "クレジットカード", checked: true %>
-        <%= f.label :pay_way, "クレジットカード", {value: "クレジットカード"} %>
+        <%= f.radio_button :pay_way, 0, checked: true %>
+        <%= f.label :pay_way, "クレジットカード", {value: 0} %>
       </div>
       <div class="row">
-        <%= f.radio_button :pay_way, "銀行振り込み" %>
-        <%= f.label :pay_way, "銀行振り込み", {value: "銀行振り込み"} %>
+        <%= f.radio_button :pay_way, 1 %>
+        <%= f.label :pay_way, "銀行振り込み", {value: 1} %>
       </div>
       <div class="row">
         <h4>お届け先</h4>

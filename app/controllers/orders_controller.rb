@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
     @cart_items = CartItem.where(end_user_id: current_end_user)
     @sum = 0
     @cart_items.each  do |cart_item|
-      @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
+    @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
+      
     end
     if @order.total_cost == 0
       @order.postal_code = current_end_user.postal_code
@@ -27,7 +28,6 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.end_user_id = current_end_user.id
     if @order.save
-      @order.update(status: 1)
     else
       render :confirm
     end

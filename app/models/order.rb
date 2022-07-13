@@ -10,5 +10,6 @@ class Order < ApplicationRecord
   validates :postage, presence: true
   validates :total_cost, presence: true
 
+  enum pay_way: { credit_card: '0', transfer: '1' }
 
 end
