@@ -24,7 +24,13 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    
+    @order = Order.new(order_params)
+    @order.end_user_id = current_end_user.id
+    if @order.save
+      @order.update(status: 1)
+    else
+      render :confirm
+      
   end
 
   def index
