@@ -4,6 +4,12 @@
       <h3>注文情報確認</h3>
     </div>
   </div>
+  <% if @order.errors.any? %>
+      <%= @order.errors.count %>errors
+      <% @order.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
   <div class="row">
     <table class="table col">
       <thead>
