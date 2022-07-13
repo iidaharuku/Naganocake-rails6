@@ -62,6 +62,7 @@
   </div>
   <div>
     <%= form_with model: @order,  url: orders_complete_path ,method: :get do |f| %>
-    <%= f.submit "注文を確定する", class: "btn btn-success text-white" %>
+      <%= f.submit "注文を確定する", class: "btn btn-success text-white" %>
+    <% end %>
   </div>
 </div>

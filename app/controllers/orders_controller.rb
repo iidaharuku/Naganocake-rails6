@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       @order.update(status: 1)
     else
       render :confirm
-      
+    end
   end
 
   def index
