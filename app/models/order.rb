@@ -9,6 +9,6 @@ class Order < ApplicationRecord
   validates :pay_way, presence: true
   validates :postage, presence: true
   validates :total_cost, presence: true
-  validates :status, presence: true ,default: 0
+
 
 end

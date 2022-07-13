@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_100645) do
     t.string "pay_way"
     t.integer "postage"
     t.integer "total_cost"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
