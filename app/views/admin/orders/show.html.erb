@@ -24,15 +24,18 @@
   </div>
   <div class="row">
     <div class="col"><P>支払い方法</P></div>
-    <div class="col"><%= @order.pay_way %></div>
+    <div class="col"><%= @order.pay_way_i18n %></div>
   </div>
   <div class="row">
     <div class="col"><P>注文ステータス</P></div>
     <div class="col">
       <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-        <%= f.select :status, [["入金待ち",0],["入金確認",1] , ["製作中",2], ["発送準備中",3], ["発送済み",4]], style: "display: inline-block;" %>
+        <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+        <!--%= f.select :status, [["入金待ち",0], ["入金確認",1] , ["製作中",2], ["発送準備中",3], ["発送済み",4]], style: "display: inline-block;" %>-->
         <%= f.submit '更新', style: "display: inline-block;" ,class: "btn btn-success text-white"%>
+
       <% end %>
+
     </div>
   </div>
   <div class="row">

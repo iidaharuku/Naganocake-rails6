@@ -10,6 +10,7 @@ class Order < ApplicationRecord
   validates :postage, presence: true
   validates :total_cost, presence: true
 
+  # pay_way_id :file_params[:pay_way]
   # def goukei(order)
   #   sum = 0
   #   order.order_detail.each  do |order_detail|
@@ -18,7 +19,9 @@ class Order < ApplicationRecord
   #   puts sum
   # end
 
-  enum pay_way: { credit_card: '0', transfer: '1' }
+  # enum pay_way: { credit_card: 0, transfer: 1 }
+  enum pay_way:[:credit_card, :transfer]
+  # enum status: { waiting: '0', confirm: '1', producing: '2', ready_to_ship: '3', ship: '4'}
+  enum status: [:waiting, :confirm , :producing, :ready_to_ship, :ship]
 
-  enum status: { waiting: '0', confirm: '1', producing: '2', ready_to_ship: '3', ship: '4'}
 end

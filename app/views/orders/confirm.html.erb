@@ -54,7 +54,7 @@
   </div>
   <div class="row">
     <div class="col"><P>支払方法</P></div>
-    <div class="col"><%= @order.pay_way %></div>
+    <div class="col"><%= @order.pay_way_i18n %></div>
   </div>
   <div class="row">
     <div class="col"><P>お届け先</P></div>
@@ -68,6 +68,7 @@
       <%= f.hidden_field :pay_way, :value => @order.pay_way %>
       <%= f.hidden_field :total_cost, :value => @order.total_cost %>
       <%= f.hidden_field :postage, :value => @order.postage %>
+      <%= f.hidden_field :pay_way, :value => @order.pay_way %>
       <%= f.submit "注文を確定する", class: "btn btn-success text-white" %>
     <% end %>
   </div>
