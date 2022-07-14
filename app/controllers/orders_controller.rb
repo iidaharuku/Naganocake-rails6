@@ -8,9 +8,9 @@ class OrdersController < ApplicationController
     @cart_items = CartItem.where(end_user_id: current_end_user)
     @sum = 0
     @cart_items.each  do |cart_item|
-    @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
-      
+      @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
     end
+    
     if @order.total_cost == 0
       @order.postal_code = current_end_user.postal_code
       @order.send_address = current_end_user.address
@@ -31,6 +31,8 @@ class OrdersController < ApplicationController
     else
       render :confirm
     end
+    
+    
   end
 
   def index
