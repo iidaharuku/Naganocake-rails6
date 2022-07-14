@@ -11,11 +11,11 @@ class OrdersController < ApplicationController
       @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
     end
 
-    if @order.total_cost == 0
+    if @order.pay_way == 0
       @order.postal_code = current_end_user.postal_code
       @order.send_address = current_end_user.address
       @order.address_name = current_end_user.last_name + current_end_user.first_name
-    elsif @order.total_cost == 1
+    elsif @order.pay_way == 1
       order_address = Address.find_by(id: postage)
       @order.postal_code = order_address.postal_code
       @order.send_address = order_address.place
