@@ -15,15 +15,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_details.each  do |order_detail| %>
+        <% @orders.each do |order| %>
           <tr>
-            <th><%= order_detail.created_at %></th>
-            <th><%= order_detail.order.address_name %></th>
+            <th><%= link_to order.created_at, admin_order_path(order) %></th>
+            <th><%= order.address_name %></th>
             <th>
-              <%= order_detail.amount %>
+              <%= order.order_detail.all.sum(:amount) %>
             </th>
             <th>
-              <%= order_detail.create_status %>
+　　　　　　　<%= order.status %>
             </th>
           </tr>
         <% end %>

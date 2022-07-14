@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'customers/confirm' => 'customers#confirm'
   patch 'customers/withdraw' => 'customers#withdraw'
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  
+
   get 'orders/complete' => 'orders#complete'
   get 'orders/confirm' => 'orders#confirm'
   resources :orders, only: [:new, :create, :index, :show]
@@ -28,6 +28,6 @@ Rails.application.routes.draw do
     resources :customers
     resources :genres
     resources :items
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index, :show, :update]
   end
 end
