@@ -30,9 +30,24 @@ class OrdersController < ApplicationController
     if @order.save
     else
       render :confirm
+      @cart_items = CartItem.where(end_user_id: current_end_user)
+      @sum = 0
+      @cart_items.each  do |cart_item|
+        @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
+    end
     end
     
-    
+    @cart_items = CartItem.where(end_user_id: current_end_user)
+    @cart_items.each  do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
+      @order_detail.item_id = cart_item.id
+      @order_detail.past_item_cost = (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
+      @order_detail.amout = cart_item.item.amount
+      unless  @order_detail.save
+        render :confirm
+      end
+    end
   end
 
   def index
