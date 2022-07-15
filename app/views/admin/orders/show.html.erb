@@ -63,7 +63,7 @@
             </th>
             <%= form_with model: detail, url: admin_order_detail_path(detail), method: :patch do |f| %>
             <th>
-              <%= f.select :crezte_status, OrderDetail.create_statuses.keys.map {|k| [I18n.t("enums.order_detail.create_status.#{k}"), k]} %>
+              <%= f.select :create_status, OrderDetail.create_statuses.keys.map {|k| [I18n.t("enums.order_detail.create_status.#{k}"), k]} %>
             </th>
             <th><%= f.submit '更新', style: "display: inline-block;" ,class: "btn btn-success text-white"%></th>
             <% end %>
