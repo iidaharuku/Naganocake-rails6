@@ -30,6 +30,7 @@ class Admin::OrdersController < ApplicationController
       end
       render :show
     end
+    
   end
   
   private

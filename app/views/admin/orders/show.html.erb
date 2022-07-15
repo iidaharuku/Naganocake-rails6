@@ -47,6 +47,7 @@
           <th><P>数量</P></th>
           <th><P>小計</P></th>
           <th><P>製作ステータス</P></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -60,9 +61,12 @@
             <th>
               <%= (detail.item.tax_free_cost*1.08).to_i * detail.amount %>
             </th>
+            <%= form_with model: detail, url: admin_order_detail_path(detail), method: :patch do |f| %>
             <th>
-              <%= detail.create_status %>
+              <%= f.select :crezte_status, OrderDetail.create_statuses.keys.map {|k| [I18n.t("enums.order_detail.create_status.#{k}"), k]} %>
             </th>
+            <th><%= f.submit '更新', style: "display: inline-block;" ,class: "btn btn-success text-white"%></th>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

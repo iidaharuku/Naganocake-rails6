@@ -29,5 +29,6 @@ Rails.application.routes.draw do
     resources :genres
     resources :items
     resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
 end
