@@ -5,12 +5,15 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    @cart_items = CartItem.where(end_user_id: current_end_user)
+    if @cart_items.empty? then
+      render :new
+    end
     if params[:order][:pay_way] == "0"
       @order.pay_way = 0
     elsif params[:order][:pay_way] == "1"
       @order.pay_way = 1
     end
-    @cart_items = CartItem.where(end_user_id: current_end_user)
     @sum = 0
     @cart_items.each  do |cart_item|
       @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
@@ -30,7 +33,11 @@ class OrdersController < ApplicationController
   end
 
   def complete
+    @cart_items = CartItem.where(end_user_id: current_end_user)
     @order = Order.new(order_params)
+    if @cart_items.empty? then
+      render :new
+    end
     if params[:order][:pay_way] == "0" or "credit_card"
       @order.pay_way = 0
     elsif params[:order][:pay_way] == "1" or "transfer"
@@ -39,7 +46,6 @@ class OrdersController < ApplicationController
     @order.end_user_id = current_end_user.id
     if @order.save
     else
-      @cart_items = CartItem.where(end_user_id: current_end_user)
       @sum = 0
       @cart_items.each  do |cart_item|
         @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
@@ -55,6 +61,7 @@ class OrdersController < ApplicationController
       @order_detail.past_item_cost = (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
       @order_detail.amount = cart_item.amount
       if @order_detail.save
+        @cart_items.destroy_all
       else
         @cart_items = CartItem.where(end_user_id: current_end_user)
         @sum = 0
@@ -64,6 +71,7 @@ class OrdersController < ApplicationController
         render :confirm and return
       end
     end
+
 
   end
 
