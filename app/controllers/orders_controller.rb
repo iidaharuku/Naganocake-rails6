@@ -66,13 +66,13 @@ class OrdersController < ApplicationController
       @order_detail.amount = cart_item.amount
       if @order_detail.save
         @cart_items.destroy_all
-      else
-        @cart_items = CartItem.where(end_user_id: current_end_user)
-        @sum = 0
-        @cart_items.each  do |cart_item|
-          @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
-        end
-        render :confirm and return
+      # else
+      #   @cart_items = CartItem.where(end_user_id: current_end_user)
+      #   @sum = 0
+      #   @cart_items.each  do |cart_item|
+      #     @sum += (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount
+      #   end
+      #   render :confirm and return
       end
     end
 
