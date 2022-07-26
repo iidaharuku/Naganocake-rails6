@@ -1,13 +1,17 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
+    @cart_items = CartItem.where(end_user_id: current_end_user)
+    if @cart_items.empty? then
+      redirect_to cart_items_path
+    end
   end
 
   def confirm
     @order = Order.new(order_params)
     @cart_items = CartItem.where(end_user_id: current_end_user)
     if @cart_items.empty? then
-      render :new
+      redirect_to cart_items_path
     end
     if params[:order][:pay_way] == "0"
       @order.pay_way = 0
@@ -36,7 +40,7 @@ class OrdersController < ApplicationController
     @cart_items = CartItem.where(end_user_id: current_end_user)
     @order = Order.new(order_params)
     if @cart_items.empty? then
-      render :new
+      redirect_to cart_items_path
     end
     if params[:order][:pay_way] == "0" or "credit_card"
       @order.pay_way = 0
