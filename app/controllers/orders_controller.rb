@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
       @order.pay_way = 1
     end
     @order.end_user_id = current_end_user.id
+    @order.postage = 800
     if @order.save
     else
       @sum = 0
