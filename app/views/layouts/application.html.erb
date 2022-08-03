@@ -32,7 +32,7 @@
         　　<div class="row ml-auto">
               <%= form_with url: admin_search_path, method: :get do |f| %>
               　<div class="input-group">
-                  <%= f.text_field :word, placeholder: "Search" %>
+                  <%= f.text_field :name, placeholder: "Search" %>
                   <span class="input-group-btn">
                     <%= button_tag type: 'submit' do %>
                       <i class="fas fa-search"></i>
