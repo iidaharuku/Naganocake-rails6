@@ -9,7 +9,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
 
   <body>
     <header>
@@ -18,17 +18,17 @@
         <div class="ml-auto">
       　　<% if end_user_signed_in? then %>
             <%= link_to "マイページ", mypage_path, class: "btn border" %>
-        　　<p>商品一覧</p>
+        　　<%= link_to "商品一覧", items_path, class: "btn border" %>
         　　<p>カート</p>
         　　<%= link_to "ログアウト", destroy_end_user_session_path, class: "btn border", method: :delete%>
         　<% elsif admin_signed_in? then %>
-        　   <p>商品一覧</p>
+        　　<%= link_to "商品一覧", admin_items_path, class: "btn border" %>
         　　<%= link_to "会員一覧", admin_customers_path, class: "btn border" %>
         　　<p>注文履歴一覧</p>
-        　　<p>ジャンル一覧</p>
+        　　<%= link_to "ジャンル一覧", admin_genres_path, class: "btn border" %>
         　　<%= link_to "ログアウト", destroy_admin_session_path, class: "btn border", method: :delete%>
       　　<% else %>
-            <%= link_to "商品一覧", root_path, class: "btn border" %>
+            <%= link_to "商品一覧", items_path, class: "btn border" %>
         　　<%= link_to "新規登録", new_end_user_registration_path, class: "btn border" %>
         　　<%= link_to "ログイン", new_end_user_session_path, class: "btn border" %>
       　　<% end %>

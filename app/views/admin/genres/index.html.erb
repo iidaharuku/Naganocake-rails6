@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>ジャンル一覧・追加</h3>
+    </div>
+  </div>
+  <div >
+    <% if @genre.errors.any? %>
+      <%= @genre.errors.count %>errors
+      <% @genre.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+    <%= form_with model: @genre,  url: admin_genres_path ,class: "row", method: :post do |f| %>
+      <div class="col-2">
+        <p>ジャンル名</p>
+      </div>
+      <div class="col-2">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ジャンル名"  %>
+      </div>
+      <div class="col-4">
+        <%= f.submit "新規登録",class: "btn btn-success text-white" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <table class="table">
+      　<thead>
+        　<tr>
+          　<th><P>ジャンル</P></th>
+          　<th></th>
+        　</tr>
+      　</thead>
+      　<tbody>
+        　<% @genres.each do |genre| %>
+            <tr>
+              <th><%= genre.name %></th>
+              <th><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success text-white" %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <div class="col-4">
+    </div>
+  </div>
+</div>
