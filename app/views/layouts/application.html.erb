@@ -22,11 +22,25 @@
         　　<%= link_to "カート", cart_items_path, class: "btn border" %>
         　　<%= link_to "ログアウト", destroy_end_user_session_path, class: "btn border", method: :delete%>
         　<% elsif admin_signed_in? then %>
-        　　<%= link_to "商品一覧", admin_items_path, class: "btn border" %>
-        　　<%= link_to "会員一覧", admin_customers_path, class: "btn border" %>
-        　　<%= link_to "注文履歴一覧", admin_orders_path, class: "btn border" %>
-        　　<%= link_to "ジャンル一覧", admin_genres_path, class: "btn border" %>
-        　　<%= link_to "ログアウト", destroy_admin_session_path, class: "btn border", method: :delete%>
+        　　<div class= "row">
+        　　    <%= link_to "商品一覧", admin_items_path, class: "btn border" %>
+        　　    <%= link_to "会員一覧", admin_customers_path, class: "btn border" %>
+        　　    <%= link_to "注文履歴一覧", admin_orders_path, class: "btn border" %>
+              <%= link_to "ジャンル一覧", admin_genres_path, class: "btn border" %>
+        　　    <%= link_to "ログアウト", destroy_admin_session_path, class: "btn border", method: :delete%>
+        　　</div>
+        　　<div class="row ml-auto">
+              <%= form_with url: admin_search_path, method: :get do |f| %>
+              　<div class="input-group">
+                  <%= f.text_field :name, placeholder: "Search" %>
+                  <span class="input-group-btn">
+                    <%= button_tag type: 'submit' do %>
+                      <i class="fas fa-search"></i>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+        　　</div>
       　　<% else %>
             <%= link_to "商品一覧", items_path, class: "btn border" %>
         　　<%= link_to "新規登録", new_end_user_registration_path, class: "btn border" %>

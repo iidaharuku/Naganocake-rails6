@@ -30,5 +30,6 @@ Rails.application.routes.draw do
     resources :items
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
+    get "search" => "searches#search"
   end
 end
