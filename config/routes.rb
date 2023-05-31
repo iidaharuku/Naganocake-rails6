@@ -1,3 +1,19 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :end_users, controllers: {
+    sessions: 'end_users/sessions',
+    registrations: 'end_users/registrations'
+  }
+  root to: 'homes#top'
+  get 'homes/about'
+  get 'customers/mypage' => 'customers#show', as: 'mypage'
+  get 'customers/edit' => 'customers#edit'
+  patch 'customers/update' => 'customers#update'
+  get 'customers/confirm' => 'customers#confirm'
+  patch 'customers/withdraw' => 'customers#withdraw'
+  devise_for :admin, controllers: {
+    sessions: 'admin/sessions',
+  }
+  namespace :admin do
+    root to: 'homes#top'
+  end
 end
