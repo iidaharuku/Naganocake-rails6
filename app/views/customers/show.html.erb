@@ -1,2 +1,69 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>マイページ</h3>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>登録情報</h4>
+    </div>
+    <div class="col">
+      <%= link_to "編集する", customers_edit_path, class: "btn btn-success text-white" %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <!--<thead>-->
+      <!--  <tr>-->
+      <!--    <th></th>-->
+      <!--    <th></th>-->
+      <!--  </tr>-->
+      <!--</thead>-->
+      <tbody>
+        <tr>
+          <th><p>氏名</p></th>
+          <th><%= current_end_user.last_name %>  <%= current_end_user.first_name %></th>
+        </tr>
+        <tr>
+          <th><p>カナ</p></th>
+          <th><%= current_end_user.last_kana_name %>  <%= current_end_user.first_kana_name %></th>
+        </tr>
+        <tr>
+          <th><p>郵便番号</p></th>
+          <th><%= current_end_user.postal_code %></th>
+        </tr>
+        <tr>
+          <th><p>住所</p></th>
+          <th><%= current_end_user.address %></th>
+        </tr>
+        <tr>
+          <th><p>電話番号</p></th>
+          <th><%= current_end_user.telephone_number %></th>
+        </tr>
+        <tr>
+          <th><p>メールアドレス</p></th>
+          <th><%= current_end_user.email %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>配送先</h4>
+    </div>
+    <div class="col">
+      <p>一覧を見る</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>注文履歴</h4>
+    </div>
+    <div class="col">
+      <p>一覧を見る</p>
+    </div>
+  </div>
+</div>

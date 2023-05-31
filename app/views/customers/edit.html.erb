@@ -1,2 +1,75 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class="container">
+  <h3>会員情報編集</h3>
+  <%= form_with model: current_end_user, url: customers_update_path, method: :patch do |f| %>
+  <div class="row">
+    <div class="col-2 pt-4">
+      <p>氏名</p>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "令和" %>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "道子" %>
+　  </div>
+　</div>
+　<div class="row">
+    <div class="col-2 pt-4">
+      <p>フリガナ</p>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :last_kana_name, autocomplete: "last_kana_name", placeholder: "レイワ" %>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :first_kana_name, autocomplete: "first_kana_name", placeholder: "ミチコ" %>
+　  </div>
+　</div>
+　<div class="row">
+    <div class="col-2 pt-4">
+      <p>郵便番号</p>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000" %>
+　  </div>
+　  <div class="col-2"></div>
+　</div>
+　<div class="row">
+    <div class="col-2 pt-4">
+      <p>住所</p>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+　  </div>
+　  <div class="col-2"></div>
+　</div>
+　<div class="row">
+    <div class="col-2 pt-4">
+      <p>電話番号</p>
+　  </div>
+　  <div class="col-2">
+　　  <%= f.text_field :telephone_number, autocomplete: "telephone_number", placeholder: "0000000000" %>
+　  </div>
+　  <div class="col-2"></div>
+　</div>
+　<div class="row">
+    <div class="col-2 pt-4">
+      <p>メールアドレス</p>
+　  </div>
+　  <div class="col-2">
+　    <%= f.text_field :email, autocomplete: "email", placeholder: "sample@example.com" %>
+　  </div>
+　  <div class="col-2"></div>
+　</div>
+  <div class="row">
+    <div class="col-2 pt-4">
+　  </div>
+　  <div class="col-1 pt-4 pl-5"></div>
+　  <div class="col-2">
+　    <%= f.submit "編集内容を保存", class: "btn btn-success text-white" %>
+　  </div>
+　  <div class="col-1 pt-4 pl-5"></div>
+　  <div class="col-2">
+　    <%= link_to "退会する", customers_confirm_path, class: "btn btn-danger text-white" %>
+　  </div>
+　</div>
+  <% end %>
+</div>

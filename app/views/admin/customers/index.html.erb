@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>会員一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><P>会員ID</P></th>
+          <th><P>氏名</P></th>
+          <th><P>メールアドレス</P></th>
+          <th><P>ステータス</P></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <th><%= user.id %></th>
+            <th><%= user.last_name%><%= user.first_name%></th>
+            <th><%= user.email%></th>
+            <th>
+              <% if user.withdraw_status != false%>
+                <p>退会</p>
+              <% else %>
+                <p>有効</p>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>1 2 3 Next＞ Last >></p>
+    </div>
+  </div>
+</div>
