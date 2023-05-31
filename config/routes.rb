@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: 'homes#top'
   get 'homes/about'
   resources :items
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
   get 'customers/confirm' => 'customers#confirm'
   patch 'customers/withdraw' => 'customers#withdraw'
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
+  get 'orders/complete' => 'orders#complete'
+  get 'orders/confirm' => 'orders#confirm'
+  resources :orders, only: [:new, :create, :index, :show]
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
   }
@@ -23,5 +28,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :genres
     resources :items
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
 end

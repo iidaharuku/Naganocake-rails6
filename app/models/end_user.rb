@@ -3,6 +3,7 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :order, dependent: :destroy
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
