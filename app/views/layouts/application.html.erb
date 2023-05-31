@@ -19,7 +19,7 @@
       　　<% if end_user_signed_in? then %>
             <%= link_to "マイページ", mypage_path, class: "btn border" %>
         　　<%= link_to "商品一覧", items_path, class: "btn border" %>
-        　　<p>カート</p>
+        　　<%= link_to "カート", cart_items_path, class: "btn border" %>
         　　<%= link_to "ログアウト", destroy_end_user_session_path, class: "btn border", method: :delete%>
         　<% elsif admin_signed_in? then %>
         　　<%= link_to "商品一覧", admin_items_path, class: "btn border" %>

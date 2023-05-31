@@ -3,6 +3,7 @@ Admin.create!(
     password: "aaaaaa"
 )
 
+
 Genre.create!(
     name: "餅",
     )

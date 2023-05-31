@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>ショッピングカート</h3>
+    </div>
+    <div class="col">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger text-white", data:{ confirm: '本当にカートを空にしますか?',commit: 'OK'}, title: 'confirm' %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><P>商品名</P></th>
+          <th><P>単価(税込み)</P></th>
+          <th><P>数量</P></th>
+          <th><P>小計</P></th>
+          <th><P></P></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each  do |cart_item| %>
+          <tr>
+            <th><%= image_tag cart_item.item.get_image(60,40) %> <%= cart_item.item.name %></th>
+            <th><%= (cart_item.item.tax_free_cost*1.08).to_i %></th>
+            <th>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                <!-- f.number_field :amount, -->
+                <%= f.select :amount, [[1,1], [2,2], [3,3], [4,4], [5,5], [6,6], [7,7], [8,8], [9,9], [10,10]], include_blank: "個数選択" , style: "display: inline-block;" %>
+                <%= f.submit '変更', style: "display: inline-block;" ,class: "btn btn-success text-white"%>
+              <% end %>
+            </th>
+            <th>
+              <%= (cart_item.item.tax_free_cost*1.08).to_i * cart_item.amount %>
+            </th>
+            <th>
+              <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger text-white" %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary text-white" %>
+    </div>
+    <div class="col">
+      <table>
+        <tbody>
+          <th><P>合計金額</P></th>
+          <td>
+          <%= @sum %></td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to "情報入力に進む" , class: "btn btn-success text-white"%>
+    </div>
+  </div>
+</div>
